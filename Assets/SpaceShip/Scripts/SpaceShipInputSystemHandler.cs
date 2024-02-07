@@ -15,20 +15,31 @@ public class SpaceShipInputSystemHandler : BaseSpaceShipInput
         _input.SpaceShip.Rotate.canceled += ChangeAngle;
         _input.SpaceShip.ActivateEngine.performed += ActivateEngine;
         _input.SpaceShip.ActivateEngine.canceled += ActivateEngine;
-        _input.SpaceShip.ShootFirstWeapon.performed += StartShootFirstWeapon;
-        _input.SpaceShip.ShootFirstWeapon.canceled += EndShootFirstWeapon;
-        _input.SpaceShip.ShootSecondWeapon.performed += StartShootSecondWeapon;
-        _input.SpaceShip.ShootSecondWeapon.canceled += EndShootSecondWeapon;
+        _input.SpaceShip.ShootFirstWeapon.performed += ShootFirstWeapon;
+        _input.SpaceShip.ShootSecondWeapon.performed += ShootSecondWeapon;
+        _input.Enable();
     }
 
     public override void Enable()
     {
         _input.Enable();
+        _input.SpaceShip.Rotate.performed += ChangeAngle;
+        _input.SpaceShip.Rotate.canceled += ChangeAngle;
+        _input.SpaceShip.ActivateEngine.performed += ActivateEngine;
+        _input.SpaceShip.ActivateEngine.canceled += ActivateEngine;
+        _input.SpaceShip.ShootFirstWeapon.performed += ShootFirstWeapon;
+        _input.SpaceShip.ShootSecondWeapon.performed += ShootSecondWeapon;
     }
 
     public override void Disable()
     {
         _input.Disable();
+        _input.SpaceShip.Rotate.performed -= ChangeAngle;
+        _input.SpaceShip.Rotate.canceled -= ChangeAngle;
+        _input.SpaceShip.ActivateEngine.performed -= ActivateEngine;
+        _input.SpaceShip.ActivateEngine.canceled -= ActivateEngine;
+        _input.SpaceShip.ShootFirstWeapon.performed -= ShootFirstWeapon;
+        _input.SpaceShip.ShootSecondWeapon.performed -= ShootSecondWeapon;
     }
 
     private void ChangeAngle(InputAction.CallbackContext callbackContext)
@@ -41,23 +52,13 @@ public class SpaceShipInputSystemHandler : BaseSpaceShipInput
         ActivateEngine(callbackContext.ReadValue<float>());
     }
 
-    private void StartShootFirstWeapon(InputAction.CallbackContext callbackContext)
+    private void ShootFirstWeapon(InputAction.CallbackContext callbackContext)
     {
-        StartShootFirstWeapon();
+        ShootFirstWeapon();
     }
 
-    private void EndShootFirstWeapon(InputAction.CallbackContext callbackContext)
+    private void ShootSecondWeapon(InputAction.CallbackContext callbackContext)
     {
-        EndShootFirstWeapon();
-    }
-
-    private void StartShootSecondWeapon(InputAction.CallbackContext callbackContext)
-    {
-        StartShootSecondWeapon();
-    }
-
-    private void EndShootSecondWeapon(InputAction.CallbackContext callbackContext)
-    {
-        EndShootSecondWeapon();
+        ShootFirstWeapon();
     }
 }

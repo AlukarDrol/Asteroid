@@ -6,20 +6,29 @@ public class SpaceShipEngine : IUpdate
 {
     private GameContainer _gameContainer;
     private BaseSpaceShipInput _baseSpaceShipInput;
+    private SpaceShipModel _spaceShipModel;
 
-    private float _speedMultipler = 0.0f;
-    public float SpeedModifier => _speedMultipler;
-    public SpaceShipEngine(GameContainer gameContainer, BaseSpaceShipInput baseSpaceShipInput)
+    public SpaceShipEngine(GameContainer gameContainer, SpaceShipModel spaceShipModel, BaseSpaceShipInput baseSpaceShipInput)
     {
         _gameContainer = gameContainer;
         _baseSpaceShipInput = baseSpaceShipInput;
-        _gameContainer.GameUpdates.Add(this);
+        _spaceShipModel = spaceShipModel;
         _baseSpaceShipInput.OnActivateEngine += ActivateEngine;
+    }
+
+    public void Enable()
+    {
+        _baseSpaceShipInput.OnActivateEngine += ActivateEngine;
+    }
+
+    public void Disable()
+    {
+        _baseSpaceShipInput.OnActivateEngine -= ActivateEngine;
     }
 
     public void ActivateEngine(float speedMultipler)
     {
-        _speedMultipler = speedMultipler;
+        _spaceShipModel.SpeedModifier = speedMultipler;
     }
 
     public void Update(float delta)

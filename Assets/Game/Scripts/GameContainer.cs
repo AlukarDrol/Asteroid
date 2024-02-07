@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameContainer : MonoBehaviour
@@ -10,8 +8,12 @@ public class GameContainer : MonoBehaviour
     [SerializeField] private GameUIContainer _gameUIContainer;
     public GameUIContainer GameUIContainer => _gameUIContainer;
 
+    private EnemyPoolView _enemyPoolView;
+    public EnemyPoolView EnemyPoolView => _enemyPoolView;
+
     private void Awake()
     {
+        _enemyPoolView = new EnemyPoolView();
         Game game = new Game(this);
     }
 }

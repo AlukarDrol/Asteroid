@@ -11,10 +11,9 @@ public abstract class BaseSpaceShipInput
     public event Action<float> OnActivateEngine;
     public event Action<float> OnChangeAngle;
 
-    public event Action OnStartShootFirstWeapon;
-    public event Action OnEndStartShootFirstWeapon;
-    public event Action OnStartShootSecondWeapon;
-    public event Action OnEndStartShootSecondWeapon;
+    public event Action OnShootFirstWeapon;
+    public event Action OnShootSecondWeapon;
+ 
 
     protected void ActivateEngine(float speed)
     {
@@ -26,23 +25,13 @@ public abstract class BaseSpaceShipInput
         OnChangeAngle?.Invoke(speed);
     }
 
-    protected void StartShootFirstWeapon()
+    protected void ShootFirstWeapon()
     {
-        OnStartShootFirstWeapon?.Invoke();
+        OnShootFirstWeapon?.Invoke();
     }
 
-    protected void EndShootFirstWeapon()
+    protected void ShootSecondWeapon()
     {
-        OnEndStartShootFirstWeapon?.Invoke();
-    }
-
-    protected void StartShootSecondWeapon()
-    {
-        OnStartShootSecondWeapon?.Invoke();
-    }
-
-    protected void EndShootSecondWeapon()
-    {
-        OnEndStartShootSecondWeapon?.Invoke();
+        OnShootSecondWeapon?.Invoke();
     }
 }

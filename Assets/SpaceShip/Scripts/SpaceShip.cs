@@ -7,36 +7,15 @@ public class SpaceShip
 {
     private SpaceShipInfo _spaceShipInfo;
     private SpaceShipView _spaceShipView;
-    private BaseSpaceShipInput _spaceShipInputHandler;
-    private GameContainer _gameContainer;
-    private SpaceShipEngine _spaceShipEngine;
+    public SpaceShipView SpaceShipView => _spaceShipView;
 
-    public SpaceShip(GameContainer gameContainer, SpaceShipInfo spaceShipInfo, SpaceShipView spaceShipView, BaseSpaceShipInput spaceShipInputHandler, SpaceShipEngine spaceShipEngine)
+    private SpaceShipEngine _spaceShipEngine;
+    private List<Weapon> _weapons;
+    public SpaceShip(SpaceShipInfo spaceShipInfo, SpaceShipView spaceShipView, SpaceShipEngine spaceShipEngine, List<Weapon> weapon)
     {
-        _gameContainer = gameContainer;
         _spaceShipInfo = spaceShipInfo;
         _spaceShipView = spaceShipView;
-        _spaceShipInputHandler = spaceShipInputHandler;
-        _spaceShipInputHandler.Enable();
-    }
-
-    private void ActivateEngine(float speedModifier)
-    {
-        Debug.LogError("SpaceShip ActivateEngine");
-    }
-
-    private void Rotate(float speedModifier)
-    {
-        Debug.LogError("SpaceShip Rotate");
-    }
-
-    private void ShootFirstWeapon()
-    {
-        Debug.LogError("SpaceShip ShootFirstWeapon");
-    }
-
-    private void ShootSecondWeapon()
-    {
-        Debug.LogError("SpaceShip ShootSecondWeapon");
+        _spaceShipEngine = spaceShipEngine;
+        _weapons = weapon;
     }
 }

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spaceShipInfo:
     _name: Viper
-    _speed: 5
+    _speed: 3
     _maxSpeed: 20
-    _turningSpeed: 3
+    _turningSpeed: 300
+    _firstWeaponInfo: {fileID: 11400000, guid: 4f6dfd3589cf042a98469acb1227008d, type: 2}
+    _secondWeaponInfo: {fileID: 11400000, guid: 4f6dfd3589cf042a98469acb1227008d, type: 2}

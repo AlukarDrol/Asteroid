@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameUpdates : MonoBehaviour
 {
-    private List<IUpdate> _updates = new List<IUpdate>();
+    private readonly List<IUpdate> _updates = new List<IUpdate>();
     private bool _isPaused = false;
 
     public void Add(IUpdate updateObject)
@@ -34,9 +34,9 @@ public class GameUpdates : MonoBehaviour
             return;
         }
 
-        foreach (var element in _updates)
+        for (int i =0; i < _updates.Count; i++)
         {
-            element.Update(Time.deltaTime);
+            _updates[i].Update(Time.deltaTime);
         }
     }
 }

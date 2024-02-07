@@ -16,4 +16,10 @@ public class SpaceShipInfo
 
     [SerializeField] private float _turningSpeed;
     public float TurningSpeed => _turningSpeed;
+
+    [SerializeField] private WeaponInfoSO _firstWeaponInfo;
+    public WeaponInfoSO FirstWeaponInfo => _firstWeaponInfo;
+
+    [SerializeField] private WeaponInfoSO _secondWeaponInfo;
+    public WeaponInfoSO SecondWeaponInfo => _secondWeaponInfo;
 }
